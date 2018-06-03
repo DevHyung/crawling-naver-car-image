@@ -9,10 +9,10 @@ header = {
 }
 
 if __name__ == "__main__":
-    year = '2017'
-    max = 26
+    year = '2010'
+    max = 12
     for idx in range(1,max+1):
-        url = 'https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=0&importYn=Y&saleType=-1&lnchYY='+year+'&page='+str(idx)
+        url = 'https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=0&importYn=Y&saleType=-1&lnchYY='+year+'&page='+str(idx)
         html = requests.get(url)
         bs4 = BeautifulSoup(html.text,'lxml')
         modelLst_lis = bs4.find('ul',class_='model_lst ').find_all('li')
@@ -21,11 +21,11 @@ if __name__ == "__main__":
                 print(li.find('img')['src'])
                 pic_url = li.find('img')['src']
                 pic_title = li.find('img')['alt']
-                dirname = "./pics/"
+                dirname = "./pics/"+year+'/'
                 if not os.path.exists(dirname):
                     os.makedirs(dirname)
                 fileurl = dirname + str(pic_title.strip()) +".jpg"
                 urllib.request.urlretrieve(pic_url, fileurl)
             except:
                 pass
-        time.sleep(2)
+        time.sleep(1)
