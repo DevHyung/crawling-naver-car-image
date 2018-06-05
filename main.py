@@ -9,7 +9,7 @@ header = {
 }
 
 if __name__ == "__main__":
-    year = '2010'
+    year = '2016'
     max = 12
     for idx in range(1,max+1):
         url = 'https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=0&importYn=Y&saleType=-1&lnchYY='+year+'&page='+str(idx)
